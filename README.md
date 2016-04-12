@@ -11,7 +11,7 @@ All-in-one container for trying out Storm development using F# and [FsShelter](h
 docker run --name fsshelter-samples -d -p 8080:8080 prolucid/fsshelter-samples
 ```
 
-This will start all the Storm processes required to see a topology in action and map `8080` port for the Storm's web UI.
+This will start all the Storm processes required to see a topology in action and map `8080` port so that you can use Storm's web UI to see it running.
 
 ## Submitting a sample for execution
 Open a terminal session with the started container:
@@ -27,12 +27,12 @@ or
 ```
 mono samples/Guaranteed/bin/Release/Guaranteed.exe submit-local
 ```
-Storm takes about 30sec. to spin up all the processes and establish the communications between them, the topology will run indefinetely and restarted if necessary.
+Storm takes about 30sec. to spin up all the processes and establish the communications between them, the topology will run indefinetely and be restarted if necessary.
 
 ## Observing the execution
 Inside the container, open `/opt/storm/logs` and find the worker logs corresponding to the submitted topology, these logs will capture the Storm side of interaction.
-In `/root/logs` folder you can find the logs the sample components create.
-Outside of the container, open `localhost:8080` (or use the ip/hostname if accesing remotely) in your browser and see the submitted topology(ies) in the Storm UI.
+In `/root/logs` folder you can find the logs that the sample components create.
+Outside of the container, open `localhost:8080` (or use the ip/hostname if accesing remotely) in your browser to see the submitted topology(ies) in the Storm UI.
 
 
 ## Killing a sample
@@ -45,7 +45,7 @@ or
 mono samples/Guaranteed/bin/Release/Guaranteed.exe kill
 ```
 
-## Getting more info
+## Getting more info (and more samples to run)
 [Storm](http://storm.apache.org)
 [FsShelter](https://prolucid.github.io/FsShelter)
 [Prolucid](http://prolucid.ca)
