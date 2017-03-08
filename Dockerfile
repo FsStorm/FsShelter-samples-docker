@@ -1,4 +1,4 @@
-FROM fsharp/fsharp
+FROM fsharp:4.0
 MAINTAINER Eugene Tolmachev 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -12,7 +12,7 @@ RUN add-apt-repository ppa:openjdk-r/ppa
 RUN apt-get update && apt-get install -y openjdk-8-jdk 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/ 
 
-ENV STORM_RELEASE 1.0.1
+ENV STORM_RELEASE 1.0.2
 RUN wget -nv -O /storm.tar.gz \
     http://www.apache.org/dist/storm/apache-storm-${STORM_RELEASE}/apache-storm-${STORM_RELEASE}.tar.gz 
 RUN mkdir -p /opt/storm && \
