@@ -2,7 +2,7 @@
 All-in-one container for trying out Storm development using F# and [FsShelter](https://github.com/prolucid/FsShelter).
 
  * Java 8
- * Storm 1.0.1
+ * Storm 1.0.2
  * Mono 4.x
  * F# 4.0
 
