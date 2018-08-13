@@ -1,18 +1,18 @@
-FROM fsharp:4.0
+FROM fsharp:10.0.2-netcore
 MAINTAINER Eugene Tolmachev 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -y && apt-get install -y software-properties-common \
+RUN apt-get update -y && apt-get install -y software-properties-common wget git \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV LANG en_US.UTF-8 
-RUN locale-gen $LANG 
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199
+RUN mkdir -p /usr/share/man/man1 
 
 RUN add-apt-repository ppa:openjdk-r/ppa 
 RUN apt-get update && apt-get install -y openjdk-8-jdk 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/ 
 
-ENV STORM_RELEASE 1.0.2
+ENV STORM_RELEASE 1.2.2
 RUN wget -nv -O /storm.tar.gz \
     http://www.apache.org/dist/storm/apache-storm-${STORM_RELEASE}/apache-storm-${STORM_RELEASE}.tar.gz 
 RUN mkdir -p /opt/storm && \
