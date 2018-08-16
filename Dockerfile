@@ -2,13 +2,15 @@ FROM fsharp:10.0.2-netcore
 MAINTAINER Eugene Tolmachev 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -y && apt-get install -y software-properties-common wget git \
+RUN apt-get update -y && apt-get install -y software-properties-common \
+        python-minimal wget git locales \
 	&& rm -rf /var/lib/apt/lists/*
+
+ENV LANG en_US.UTF-8
+RUN echo $LANG UTF-8 > /etc/locale.gen && /usr/sbin/locale-gen 
 
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199
 RUN mkdir -p /usr/share/man/man1 
-
-RUN add-apt-repository ppa:openjdk-r/ppa 
 RUN apt-get update && apt-get install -y openjdk-8-jdk 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/ 
 
@@ -23,7 +25,7 @@ ENV STORM_HOME /opt/storm
 RUN ln -s $STORM_HOME/bin/storm /usr/bin/storm 
 
 WORKDIR /opt
-RUN git clone https://github.com/Prolucid/FsShelter.git
+RUN git clone --depth 1 https://github.com/Prolucid/FsShelter.git
 
 WORKDIR FsShelter
 RUN ./build.sh build

@@ -22,7 +22,7 @@ docker exec -it fsshelter-samples bash
 ```
 <br/>A copy of FsShelter is included and pre-built in `/opt/FsShelter` folder of the container. To submit a sample, from the bash prompt in FsShelter enter:
 ```
-dotnet samples/Guaranteed/bin/Debug/Guaranteed.dll -- self-host
+dotnet samples/Guaranteed/bin/Release/netcoreapp2.0/Guaranteed.dll self-host
 ```
 
 ## Submitting a sample for execution by Storm
@@ -32,11 +32,11 @@ docker exec -it fsshelter-samples bash
 ```
 <br/>Then, from the bash prompt in FsShelter enter:
 ```
-dotnet samples/WordCount/bin/Debug/WordCount.dll -- submit-local
+dotnet samples/WordCount/bin/Release/netcoreapp2.0/WordCount.dll submit-local
 ```
 or
 ```
-dotnet samples/Guaranteed/bin/Debug/Guaranteed.dll -- submit-local
+dotnet samples/Guaranteed/bin/Release/netcoreapp2.0/Guaranteed.dll submit-local
 ```
 
 <br/>Storm takes about 30sec. to spin up all the processes and establish the communications between them, the topology will run indefinetely and be restarted if necessary.
@@ -54,11 +54,11 @@ To kill a running sample topology, you can:
 * use Storm UI, 
 * or, from the bash prompt in FsShelter folder enter:
 ```
-dotnet samples/WordCount/bin/Debug/WordCount.dll -- kill
+dotnet samples/WordCount/bin/Release/netcoreapp2.0/WordCount.dll kill
 ```
 or
 ```
-dotnet samples/Guaranteed/bin/Debug/Guaranteed.dll -- kill
+dotnet samples/Guaranteed/bin/Release/netcoreapp2.0/Guaranteed.dll kill
 ```
 
 ## Getting more info (and more samples to run)
