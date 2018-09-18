@@ -1,4 +1,4 @@
-FROM fsharp:10.0.2-netcore
+FROM fsharp:10.2.1-netcore
 MAINTAINER Eugene Tolmachev 
 ENV DEBIAN_FRONTEND noninteractive
 
